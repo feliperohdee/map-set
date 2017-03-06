@@ -52,6 +52,10 @@ but better. It takes care to create SETS automatically on set, and remove keys w
 		console.log(mapSet.entries());
 		// { [ 'key', Set { 'value-1' } ] }
 
+		mapSet.delete('key', 'value-1', 'value-2', 'value-3');
+		console.log(mapSet.entries());
+		// { }
+
 		mapSet.forEach(console.log);
 		// Set { 'value-1', 'value-2', 'value-3' }
 
