@@ -49,14 +49,14 @@ describe('index.js', () => {
 
 		it('should remove key', () => {
 			mapSet.clear('key');
-			
+
 			expect(mapSet.size()).to.equal(1);
 			expect(mapSet.get('key')).to.be.undefined;
 		});
 
 		it('should do nothing if key not found', () => {
 			mapSet.clear('_key');
-			
+
 			expect(mapSet.size()).to.equal(2);
 			expect(mapSet.get('key')).to.be.a('Set');
 			expect(mapSet.get('key-1')).to.be.a('Set');
@@ -139,8 +139,8 @@ describe('index.js', () => {
 
 			expect(mapSet.get('key').has('value-1')).to.be.true;
 			expect(mapSet.get('key').has('value-2')).to.be.true;
-			expect(mapSet.get('key').has('value-3')).to.be.true; 
-		}); 
+			expect(mapSet.get('key').has('value-3')).to.be.true;
+		});
 
 		it('should remove one element', () => {
 			mapSet.delete('key', 'value-2');
@@ -171,7 +171,7 @@ describe('index.js', () => {
 		it('shoud iterate set', () => {
 			const result = [];
 
-			mapSet.forEach('key', result.push.bind(result));
+			mapSet.forEach('key', v => result.push(v));
 
 			expect(result).to.deep.equal([
 				'value-1',
@@ -183,7 +183,7 @@ describe('index.js', () => {
 		it('shoud do nothing if no key found', () => {
 			const result = [];
 
-			mapSet.forEach('unknownKey', result.push.bind(result));
+			mapSet.forEach('unknownKey', v => result.push(v));
 
 			expect(result).to.deep.equal([]);
 		});
@@ -191,7 +191,7 @@ describe('index.js', () => {
 		it('shoud iterate map', () => {
 			const result = [];
 
-			mapSet.forEach(result.push.bind(result));
+			mapSet.forEach(v => result.push(v));
 
 			expect(result.length).to.equal(1);
 			expect(result[0]).to.be.a('Set');

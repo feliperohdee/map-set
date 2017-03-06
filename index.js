@@ -88,10 +88,10 @@ module.exports = class MapSet extends Map {
 			const currentSet = this.get(key);
 
 			if (currentSet) {
-				currentSet.forEach(value => callback(value));
+				currentSet.forEach(callback.bind(callback));
 			}
 		} else {
-			super.forEach(value => callback(value));
+			super.forEach(callback.bind(callback));
 		}
 	}
 }
