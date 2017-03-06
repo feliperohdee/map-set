@@ -1,6 +1,6 @@
 {
   "name": "map-set",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Cool MapSet implementation",
   "main": "index.js",
   "scripts": {
