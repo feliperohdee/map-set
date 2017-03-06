@@ -139,8 +139,8 @@ describe('index.js', () => {
 
 			expect(mapSet.get('key').has('value-1')).to.be.true;
 			expect(mapSet.get('key').has('value-2')).to.be.true;
-			expect(mapSet.get('key').has('value-3')).to.be.true;
-		});
+			expect(mapSet.get('key').has('value-3')).to.be.true; 
+		}); 
 
 		it('should remove one element', () => {
 			mapSet.delete('key', 'value-2');
