@@ -5,6 +5,12 @@ module.exports = class MapSet extends Map {
 		this.set(key, ...values);
 	}
 
+	onRemoveKey(callback){
+		if(typeof callback === 'function'){
+			this._onRemoveKey = callback;
+		}
+	}
+
 	size(key) {
 		if (key) {
 			const currentSet = this.get(key);
@@ -71,6 +77,10 @@ module.exports = class MapSet extends Map {
 
 			if (!currentSet.size) {
 				super.delete(key);
+
+				if (this._onRemoveKey) {
+					this._onRemoveKey(key);
+				}
 			}
 		} else {
 			super.delete(key);

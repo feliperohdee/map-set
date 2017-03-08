@@ -20,6 +20,22 @@ describe('index.js', () => {
 		});
 	});
 
+	describe('onRemoveKey', () => {
+		it('shoud feed onRemoveKey', () => {
+			const callback = () => null;
+
+			mapSet.onRemoveKey(callback);
+
+			expect(mapSet._onRemoveKey).to.equal(callback);
+		});
+
+		it('shoud not feed onRemoveKey if not function', () => {
+			mapSet.onRemoveKey(null);
+
+			expect(mapSet._onRemoveKey).to.be.undefined;
+		});
+	});
+
 	describe('size', () => {
 		beforeEach(() => {
 			mapSet.set('key', 'value-1', 'value-2', 'value-3');
@@ -160,6 +176,15 @@ describe('index.js', () => {
 			mapSet.delete('key');
 
 			expect(mapSet.get('key')).to.be.undefined;
+		});
+
+		it('should call onRemoveKey', () => {
+			const result = [];
+
+			mapSet.onRemoveKey(key => result.push(key));
+			mapSet.delete('key', 'value-1', 'value-2', 'value-3');
+
+			expect(result).to.deep.equal(['key']);
 		});
 	});
 
