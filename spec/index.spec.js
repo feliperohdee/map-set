@@ -21,7 +21,7 @@ describe('index.js', () => {
 	});
 
 	describe('onRemoveKey', () => {
-		it('shoud feed onRemoveKey', () => {
+		it('should feed onRemoveKey', () => {
 			const callback = () => null;
 
 			mapSet.onRemoveKey(callback);
@@ -29,7 +29,7 @@ describe('index.js', () => {
 			expect(mapSet._onRemoveKey).to.equal(callback);
 		});
 
-		it('shoud not feed onRemoveKey if not function', () => {
+		it('should not set onRemoveKey if not function', () => {
 			mapSet.onRemoveKey(null);
 
 			expect(mapSet._onRemoveKey).to.be.undefined;
@@ -39,16 +39,13 @@ describe('index.js', () => {
 	describe('size', () => {
 		beforeEach(() => {
 			mapSet.set('key', 'value-1', 'value-2', 'value-3');
-
-			mapSet.size();
-			mapSet.size('a');
 		});
 
-		it('shoud get set size', () => {
+		it('should get set size', () => {
 			expect(mapSet.size('key')).to.equal(3);
 		});
 
-		it('shoud get map size', () => {
+		it('should get map size', () => {
 			expect(mapSet.size()).to.equal(1);
 		});
 	});
@@ -193,7 +190,7 @@ describe('index.js', () => {
 			mapSet.set('key', 'value-1', 'value-2', 'value-3');
 		});
 
-		it('shoud iterate set', () => {
+		it('should iterate set', () => {
 			const result = [];
 
 			mapSet.forEach('key', v => result.push(v));
@@ -205,7 +202,7 @@ describe('index.js', () => {
 			]);
 		});
 
-		it('shoud do nothing if no key found', () => {
+		it('should do nothing if no key found', () => {
 			const result = [];
 
 			mapSet.forEach('unknownKey', v => result.push(v));
@@ -213,7 +210,7 @@ describe('index.js', () => {
 			expect(result).to.deep.equal([]);
 		});
 
-		it('shoud iterate map', () => {
+		it('should iterate map', () => {
 			const result = [];
 
 			mapSet.forEach(v => result.push(v));
